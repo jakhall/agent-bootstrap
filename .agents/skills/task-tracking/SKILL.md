@@ -1,24 +1,27 @@
 # Task Tracking
 
-Description: Maintain an optional per-task note with explicit ownership, scope, and handoff state.
+Description: Maintain the required per-task note for non-trivial work with explicit ownership, scope, and handoff state.
 
 Use when:
+- The task is non-trivial and involves substantial planning, implementation, review, debugging, or coordination across turns or agents.
 - The task needs a persistent note across turns, agents, or handoffs.
 - The task needs explicit ownership or file-scope tracking before edits begin.
 - The user explicitly asks for plan tracking or a task note.
 
 Do not use when:
 - A chat response or short internal plan is enough.
-- The task is short-lived and does not need repo-tracked state.
+- The task is truly trivial, short-lived, and does not need persistent repo-tracked state.
 
 ## Instructions
 
-1. When a persistent note is useful, create `.agents/project/tasks/` on demand and create or update exactly one task note at `.agents/project/tasks/<YYYYMMDD>-<short-slug>.md` for that task.
-2. Claim ownership before editing by setting `Owner`, `Scope`, and `Files in Scope`. One task note has one owner at a time.
-3. Do not create a second note for the same task. For handoff, update the existing note's `Owner` and `Handoff` sections instead.
-4. Keep the note concise, current, and action-oriented. Rewrite stale items instead of appending history.
-5. Keep transient task state in the task note. Durable project memory, repo-wide workflows, and future-agent context belong in `.agents/project/discovery.md` instead.
-6. Use only this schema:
+1. For every non-trivial task, create `.agents/project/tasks/` on demand and create or update exactly one task note at `.agents/project/tasks/<word1>-<word2>-<word3>.md`.
+2. Use exactly three lowercase ASCII words separated by single hyphens for new filenames, for example `jumping-golden-sloth.md`.
+3. If the task already has a task note, keep using that note as the source of truth even if its filename predates the three-word-slug convention.
+4. Do not create a second note for the same task. If a preferred three-word slug is already taken by a different task, choose a different three-word slug instead of appending dates or counters.
+5. Claim ownership before substantial planning, implementation, or review work by setting `Owner`, `Scope`, and `Files in Scope`. One task note has one owner at a time.
+6. Keep the note concise, current, and action-oriented. Rewrite stale items instead of appending history.
+7. Keep transient task state in the task note. Durable project memory, repo-wide workflows, and future-agent context belong in `.agents/project/discovery.md` instead.
+8. Use only this schema:
 
 ```md
 # Title
@@ -40,4 +43,4 @@ Do not use when:
 ## Handoff
 ```
 
-7. If the task does not need persistent repo-tracked state, skip the file rather than creating ceremony.
+9. Only truly trivial tasks may skip the file. Non-trivial tasks should not proceed without one.

@@ -10,7 +10,7 @@ The template separates durable agent guidance into a few layers:
 
 - `AGENTS.md`: a small root entrypoint that points compatible coding agents toward the real instruction set.
 - `.agents/AGENTS.md`: the operating rules for how agents should approach non-trivial work in a repo using this template.
-- `.agents/skills/`: reusable workflows for common tasks like planning, project discovery, debugging, review, migrations, and test strategy.
+- `.agents/skills/`: reusable workflows for common tasks like task tracking, planning, project discovery, debugging, review, migrations, and test strategy.
 - `.agents/standards/`: lightweight cross-project guidance for coding, testing, and observability decisions.
 
 What you will not see in the template by default is `.agents/project/`. That folder is intentional project memory, not boilerplate. It should appear later inside the adopted repo only when an agent has enough local context to create something useful there.
@@ -22,7 +22,7 @@ This template is opinionated about a few things:
 - Agent instructions should be easy to discover. The root `AGENTS.md` stays tiny so tools that look for that file can find the handoff immediately.
 - Reusable guidance should stay reusable. Skills and standards live under `.agents/` so they can be copied between repos without carrying repo-specific noise with them.
 - Project memory should be earned, not pre-filled. Repo-specific docs like discovery notes, observability instructions, and task handoff files belong under `.agents/project/`, but only after the target repo has been explored.
-- Planning, observability, and proportional validation are default expectations. The template nudges agents to plan before non-trivial work, avoid guessing when visibility is weak, and report what was or was not verified.
+- Task tracking, planning, observability, and proportional validation are default expectations. The template nudges agents to create a task note for non-trivial work, plan before editing, avoid guessing when visibility is weak, and report what was or was not verified.
 
 That gives you a template that is structured enough to guide agents, but still lightweight enough to fit almost any codebase.
 
@@ -42,13 +42,14 @@ Use these as the main entrypoints when you adopt or extend the template:
 In a repo using this template, the default workflow is:
 
 1. Read `AGENTS.md`, then follow `.agents/AGENTS.md`.
-2. Before non-trivial work, inspect `.agents/skills/README.md`.
-3. Read `.agents/project/discovery.md` when it already exists.
-4. Run the `project-discovery` workflow when the repo is unfamiliar or the shared project context is stale or incomplete.
-5. Use `code-planning` before non-trivial implementation when the next safe step is not already obvious.
-6. Compose task-specific skills as needed for debugging, review, migrations, observability, task tracking, or test strategy.
-7. Refresh repo-specific memory when architecture, commands, interfaces, workflows, or important gotchas materially change.
-8. Validate changes proportionally and report what remains unverified.
+2. For every non-trivial task, create or update exactly one task note under `.agents/project/tasks/` using a three-word slug such as `jumping-golden-sloth.md`.
+3. Before non-trivial work, inspect `.agents/skills/README.md`.
+4. Read `.agents/project/discovery.md` when it already exists.
+5. Run the `project-discovery` workflow when the repo is unfamiliar or the shared project context is stale or incomplete.
+6. Use `code-planning` before non-trivial implementation when the next safe step is not already obvious.
+7. Compose the remaining task-specific skills as needed for debugging, review, migrations, observability, or test strategy.
+8. Refresh repo-specific memory when architecture, commands, interfaces, workflows, or important gotchas materially change.
+9. Validate changes proportionally and report what remains unverified.
 
 The template is meant to guide good behavior, not replace judgment. If a repo needs stricter rules, add them near the relevant subsystem or refine `.agents/AGENTS.md`.
 
@@ -60,7 +61,7 @@ When you copy this template into a real codebase, agents should create that fold
 
 - `.agents/project/discovery.md` for durable project orientation, key commands, major paths, local rules, and known gotchas.
 - `.agents/project/observability.md` when debug or tracing usage needs repo-specific explanation.
-- `.agents/project/tasks/<date>-<slug>.md` when a task needs persistent ownership, scope, or handoff state across turns or agents.
+- `.agents/project/tasks/jumping-golden-sloth.md` for non-trivial task ownership, scope, and handoff state across turns or agents.
 
 This keeps the template clean while still giving adopted repos a place to accumulate factual project memory over time.
 
@@ -72,3 +73,5 @@ This keeps the template clean while still giving adopted repos a place to accumu
 4. Do not pre-create `.agents/project/` just to mirror the template. Let agents create it when they can populate it with real repo-specific information.
 5. On the first substantial task in the adopted repo, have the agent run the project-discovery workflow and create `.agents/project/discovery.md`.
 6. As the repo evolves, update project memory only when there is durable information worth carrying forward.
+
+

@@ -17,11 +17,11 @@ Read first:
 ## Instructions
 
 1. Read current project discovery context before planning when it exists.
-2. Break the work into concrete steps with clear outcomes.
-3. Surface the main assumptions, dependencies, and likely failure points early.
-4. Put validation in the plan, not just implementation steps.
-5. If the planned work will materially change architecture, commands, shared interfaces, workflows, major directories, or important repo gotchas, include an update to `.agents/project/discovery.md` in the plan.
-6. If the user asks "what aren't we considering?" or asks for missing considerations, switch to the `what-arent-we-considering` skill and use its checklist format.
-7. Use `task-tracking` only when the work needs persistent repo-tracked state, explicit ownership, or a clean handoff across turns or agents.
+2. Create or update the task note via `task-tracking` before substantial planning whenever the task is non-trivial.
+3. Break the work into concrete steps with clear outcomes.
+4. Surface the main assumptions, dependencies, and likely failure points early.
+5. Put validation in the plan, not just implementation steps.
+6. If the planned work will materially change architecture, commands, shared interfaces, workflows, major directories, or important repo gotchas, include an update to `.agents/project/discovery.md` in the plan.
+7. If the user asks "what aren't we considering?" or asks for missing considerations, switch to the `what-arent-we-considering` skill and use its checklist format.
 8. Re-plan immediately when assumptions fail, scope changes, progress stalls, or new information invalidates the current plan.
 9. Stop when the plan is decision-ready. Execution should then continue under the task's other matching skills and the root invariants.
