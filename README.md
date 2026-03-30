@@ -72,16 +72,3 @@ This keeps the template clean while still giving adopted repos a place to accumu
 4. Do not pre-create `.agents/project/` just to mirror the template. Let agents create it when they can populate it with real repo-specific information.
 5. On the first substantial task in the adopted repo, have the agent run the project-discovery workflow and create `.agents/project/discovery.md`.
 6. As the repo evolves, update project memory only when there is durable information worth carrying forward.
-
-## Customization Guidelines
-
-- Add new skills when a workflow is repeated often enough to deserve a named playbook.
-- Keep standards lightweight and broadly reusable instead of turning them into a massive style guide.
-- Prefer refining `.agents/AGENTS.md` for repo-wide operating rules and using `.agents/project/` for facts specific to the adopted codebase.
-- Avoid blank placeholders. A missing project doc is better than a stale one.
-
-## Known Gotchas
-
-- This repo does not define app commands, dependencies, or validation commands. Those must come from the adopted project.
-- `.agents/project/` is missing on purpose in the template. Its absence should be treated as "not created yet," not as an error.
-- The template assumes discovery and planning happen before substantial implementation, but it does not force one rigid workflow for every trivial task.
