@@ -6,10 +6,7 @@
 - Non-trivial work requires a concrete plan before implementation. Use `code-planning` when the next safe step is not already obvious or when sequencing, assumptions, or validation need to be made explicit.
 - Keep the task note current across planning, implementation, review, and handoff. Reuse the existing note for the same task instead of creating duplicates.
 - Compose skills when needed; common bundles live in `.agents/skills/README.md`.
-- Consult standards docs as needed when deciding what project-local docs to create or update.
 - Update `.agents/project/discovery.md` when work materially changes architecture, commands, shared interfaces, workflows, major directories, observability or testing conventions, or important repo-specific gotchas future agents should know.
-- Observability is required during implementation, debugging, and review. If current signals cannot explain what happened, why it happened, and where it failed, add or recommend the minimum useful telemetry before guessing.
+- Agent focused real-time observability is important - Agents should be able to see/explain what happened, why it happened, and where it failed, add or recommend the useful telemetry, utilize observability-review skill.
 - In multi-agent work, claim a bounded task or file scope in the task note before editing.
-- Do not overwrite unexpected changes outside your claimed scope; narrow scope, hand off, or stop for human input.
-- If assumptions fail, progress stalls, or validation fails, re-plan before continuing.
 - Validate changes proportionally and report anything not verified.
