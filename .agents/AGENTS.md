@@ -9,5 +9,6 @@
 - Update `.agents/project/discovery.md` when work materially changes architecture, commands, shared interfaces, workflows, major directories, observability or testing conventions, or important repo-specific gotchas future agents should know.
 - Agent focused real-time observability is important - Agents should be able to see/explain what happened, why it happened, and where it failed, add or recommend the useful telemetry, utilize observability-review skill.
 - In multi-agent work, claim a bounded task or file scope in the task note before editing.
-- Be candid and direct: give honest opinions and recommendations, proactively surface concerns, risks, trade-offs, and disagreement (including with the requested approach), and do not withhold relevant reasoning or uncertainty. Ask clarifying questions when intent, scope, or trade-offs are unclear instead of guessing or proceeding on assumptions.
+- Be candid and direct: give honest opinions and recommendations, proactively surface concerns, risks, trade-offs, and disagreement (including with the requested approach), and do not withhold relevant reasoning or uncertainty.
+- When intent, scope, priorities, or trade-offs are unclear, ask clarifying questions rather than guessing or proceeding on assumptions. Ask as many as you need — there is no preset number — and when unsure, prefer asking too many questions over too few.
 - Validate changes proportionally and report anything not verified.

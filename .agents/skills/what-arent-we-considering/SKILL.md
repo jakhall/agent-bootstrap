@@ -1,6 +1,6 @@
 # What Aren't We Considering?
 
-Description: Surface exactly three missing considerations as independent checklist items for a current plan or approach.
+Description: Surface the missing considerations for a current plan or approach as independent checklist items — at least three, and more whenever there are additional real gaps worth surfacing.
 
 Use when:
 - The user asks "what aren't we considering?"
@@ -12,11 +12,12 @@ Do not use when:
 
 ## Instructions
 
-1. Identify exactly 3 concrete omissions. Each one should be a real risk, edge case, or meaningful improvement not already covered.
+1. Identify the concrete omissions worth surfacing — at least 3, and more when additional real gaps exist. Each must be a genuine risk, edge case, or meaningful improvement not already covered; do not pad the list with weak items to hit a number, and do not cap it at a fixed count.
 2. Make every item actionable. Each must imply what is missing, why it matters, and how to address it briefly.
-3. If you can provide an interactive checklist, return the following format:
+3. If you can provide an interactive checklist, return one line per omission (add as many items as you identified) in this format:
    - [ ] Include: <gap 1 summary>
    - [ ] Include: <gap 2 summary>
    - [ ] Include: <gap 3 summary>
+   - [ ] Include: <…one line per additional omission>
 4. Treat each item as an independent decision. Do not merge them, summarize them, or ask an "all, some, or none" question.
 5. Wait for the user's selections before updating any plan or checklist.

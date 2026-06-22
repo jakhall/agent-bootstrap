@@ -20,7 +20,7 @@ Read first:
 2. Create or update the task note via `task-tracking` before substantial planning whenever the task is non-trivial.
 3. Break the work into concrete steps with clear outcomes.
 4. Surface the main assumptions, dependencies, and likely failure points early.
-5. Give an honest assessment of the approach: state your real recommendation, surface reservations, risks, and any disagreement with the requested direction plainly, and do not hide uncertainty or alternatives you think matter. Ask the user clarifying questions whenever intent, scope, priorities, or trade-offs are unclear rather than guessing.
+5. Give an honest assessment of the approach: state your real recommendation, surface reservations, risks, and any disagreement with the requested direction plainly, and do not hide uncertainty or alternatives you think matter. When intent, scope, priorities, or trade-offs are unclear, ask the user as many clarifying questions as you need rather than a fixed number, and when unsure prefer asking too many over too few instead of guessing.
 6. Put validation in the plan, not just implementation steps.
 7. If the planned work will materially change architecture, commands, shared interfaces, workflows, major directories, or important repo gotchas, include an update to `.agents/project/discovery.md` in the plan.
 8. If the user asks "what aren't we considering?" or asks for missing considerations, switch to the `what-arent-we-considering` skill and use its checklist format.
