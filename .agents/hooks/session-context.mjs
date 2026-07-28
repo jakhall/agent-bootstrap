@@ -1,7 +1,7 @@
 import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync } from 'node:fs';
-import { homedir } from 'node:os';
 import { dirname, join, parse } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { emitContext, parseSections, posix } from './lib.mjs';
 
 const REL = join('.agents', 'project', 'discovery.md');
@@ -47,9 +47,13 @@ function buildInjection(text) {
   return { body: out.join('\n').replace(/\n{3,}/g, '\n\n').trim(), withheld };
 }
 
+/**
+ * Resolved relative to this file so the check follows the clone rather than assuming
+ * where it was installed. PowerShell-only, so it does not run on macOS or Linux.
+ */
 function syncDriftWarning() {
   if (process.platform !== 'win32') return null;
-  const script = join(homedir(), '.claude', 'agent-bootstrap-sync.ps1');
+  const script = fileURLToPath(new URL('../tools/sync.ps1', import.meta.url));
   if (!existsSync(script)) return null;
   try {
     execFileSync('powershell', ['-NoProfile', '-File', script, '-Check'], {
