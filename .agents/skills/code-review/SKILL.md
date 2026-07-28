@@ -18,5 +18,6 @@ Read as needed:
 2. Look first for behavioral regressions, broken assumptions, contract or data issues, missing tests, observability blind spots, and stale shared project memory.
 3. Make findings concrete: state the issue, why it matters, and where it appears.
 4. Treat a missing or stale `.agents/project/discovery.md` update as a finding when a significant change should have refreshed future-agent context.
-5. Separate confirmed issues from open questions or assumptions.
-6. If no material findings are present, say so briefly and note any remaining test or observability risk.
+5. Treat redundant, over-explanatory, or narrative comments as a finding, and flag development notes left in code that belong in the task note or `.agents/project/discovery.md`.
+6. Separate confirmed issues from open questions or assumptions.
+7. If no material findings are present, say so briefly and note any remaining test or observability risk.

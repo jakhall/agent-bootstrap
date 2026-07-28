@@ -13,6 +13,7 @@ Do not use when:
 
 Read first:
 - `../../project/discovery.md` when it exists
+- `../../standards/coding.md`
 
 ## Instructions
 

@@ -20,7 +20,7 @@ Do not use when:
 4. Do not create a second note for the same task. If a preferred three-word slug is already taken by a different task, choose a different three-word slug instead of appending dates or counters.
 5. Claim ownership before substantial planning, implementation, or review work by setting `Owner`, `Scope`, and `Files in Scope`. One task note has one owner at a time.
 6. Keep the note concise, current, and action-oriented. Rewrite stale items instead of appending history.
-7. Keep transient task state in the task note. Durable project memory, repo-wide workflows, and future-agent context belong in `.agents/project/discovery.md` instead.
+7. Keep transient task state in the task note. Durable project memory, repo-wide workflows, and future-agent context belong in `.agents/project/discovery.md` instead. Use `Notes` for current caveats and development notes that would otherwise have been written as code comments.
 8. Use only this schema:
 
 ```md
@@ -37,6 +37,8 @@ Do not use when:
 ## Checklist
 
 ## Blockers
+
+## Notes
 
 ## Validation
 
