@@ -7,6 +7,7 @@
 - Keep the task note current across planning, implementation, review, and handoff. Reuse the existing note for the same task instead of creating duplicates.
 - Compose skills when needed; common bundles live in `.agents/skills/README.md`.
 - Update `.agents/project/discovery.md` when work materially changes architecture, commands, shared interfaces, workflows, major directories, observability or testing conventions, or important repo-specific gotchas future agents should know.
+- Project-specific facts — architecture, commands, entrypoints, local rules, gotchas — belong in `.agents/project/discovery.md`, not in a repo-root `CLAUDE.md` or `AGENTS.md`. Keep those root files as thin pointers. `discovery.md` is injected at session start, so it is the copy agents actually read.
 - Reserve code comments for non-obvious or critical logic: constraints, invariants, tradeoffs, and intent a reader cannot infer from the code itself. Never restate what the code already says, narrate the diff, or leave development notes — no "changed/added this because", no TODO or FIXME markers, no historical or temporal asides. Put unfinished work, caveats, and rationale in the task note or `.agents/project/discovery.md`.
 - Agent focused real-time observability is important - Agents should be able to see/explain what happened, why it happened, and where it failed, add or recommend the useful telemetry, utilize observability-review skill.
 - In multi-agent work, claim a bounded task or file scope in the task note before editing.

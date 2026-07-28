@@ -1,11 +1,9 @@
+---
+name: test-strategy
+description: "Choose the smallest effective validation plan for a change. Use when: The user asks what to test or how to validate a change.; The correct validation approach is unclear.; A risky or cross-cutting change needs a deliberate test plan."
+---
+
 # Test Strategy
-
-Description: Choose the smallest effective validation plan for a change.
-
-Use when:
-- The user asks what to test or how to validate a change.
-- The correct validation approach is unclear.
-- A risky or cross-cutting change needs a deliberate test plan.
 
 Read first:
 - `../../standards/testing.md`

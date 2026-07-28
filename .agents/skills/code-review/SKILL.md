@@ -1,10 +1,9 @@
+---
+name: code-review
+description: "Review code or a diff for correctness, regression risk, missing validation, and operability gaps. Use when: The user asks for a review of code, a diff, or a proposed change.; You need a structured pass over risk before merge or handoff."
+---
+
 # Code Review
-
-Description: Review code or a diff for correctness, regression risk, missing validation, and operability gaps.
-
-Use when:
-- The user asks for a review of code, a diff, or a proposed change.
-- You need a structured pass over risk before merge or handoff.
 
 Read as needed:
 - `../../project/discovery.md`

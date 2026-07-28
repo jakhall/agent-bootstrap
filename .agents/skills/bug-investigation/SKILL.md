@@ -1,10 +1,9 @@
+---
+name: bug-investigation
+description: "Diagnose a failure and drive toward a root-cause fix. Use when: A bug, flaky behavior, or unexplained failure needs investigation.; The user asks why something is broken or how to debug it."
+---
+
 # Bug Investigation
-
-Description: Diagnose a failure and drive toward a root-cause fix.
-
-Use when:
-- A bug, flaky behavior, or unexplained failure needs investigation.
-- The user asks why something is broken or how to debug it.
 
 Read as needed:
 - `../../project/discovery.md`

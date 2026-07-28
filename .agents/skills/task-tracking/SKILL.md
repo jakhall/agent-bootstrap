@@ -1,12 +1,9 @@
+---
+name: task-tracking
+description: "Maintain the required per-task note for non-trivial work with explicit ownership, scope, and handoff state. Use when: The task is non-trivial and involves substantial planning, implementation, review, debugging, or coordination across turns or agents.; The task needs a persistent note across turns, agents, or handoffs.; The task needs explicit ownership or file-scope tracking before edits begin.; The user explicitly asks for plan tracking or a task note."
+---
+
 # Task Tracking
-
-Description: Maintain the required per-task note for non-trivial work with explicit ownership, scope, and handoff state.
-
-Use when:
-- The task is non-trivial and involves substantial planning, implementation, review, debugging, or coordination across turns or agents.
-- The task needs a persistent note across turns, agents, or handoffs.
-- The task needs explicit ownership or file-scope tracking before edits begin.
-- The user explicitly asks for plan tracking or a task note.
 
 Do not use when:
 - A chat response or short internal plan is enough.

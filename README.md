@@ -12,6 +12,7 @@ The template separates durable agent guidance into a few layers:
 - `.agents/AGENTS.md`: the operating rules for how agents should approach non-trivial work in a repo using this template.
 - `.agents/skills/`: reusable workflows for common tasks like task tracking, planning, project discovery, debugging, review, migrations, and test strategy.
 - `.agents/standards/`: lightweight cross-project guidance for coding, testing, and observability decisions.
+- `.agents/hooks/`: Node scripts wired into Claude Code hooks so the rules above are checked rather than merely stated. They inject `.agents/project/discovery.md` at session start, and after each write they flag disallowed comments, `discovery.md` sections that have drifted from the schema, and project detail landing in a repo-root `CLAUDE.md`. All advisory — they report, they never block.
 
 What you will not see in the template by default is `.agents/project/`. That folder is intentional project memory, not boilerplate. It should appear later inside the adopted repo only when an agent has enough local context to create something useful there.
 

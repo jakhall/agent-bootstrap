@@ -1,11 +1,10 @@
+---
+name: what-arent-we-considering
+description: "Surface the missing considerations for a current plan or approach as independent checklist items — at least three, and more whenever there are additional real gaps worth surfacing. Use when: The user asks \"what aren't we considering?\"; The user asks for missing gaps, blind spots, or overlooked risks in a current plan and wants choices, not a full review.; The user is in a planning phase and wants omissions surfaced before execution."
+manual-only: true
+---
+
 # What Aren't We Considering?
-
-Description: Surface the missing considerations for a current plan or approach as independent checklist items — at least three, and more whenever there are additional real gaps worth surfacing.
-
-Use when:
-- The user asks "what aren't we considering?"
-- The user asks for missing gaps, blind spots, or overlooked risks in a current plan and wants choices, not a full review.
-- The user is in a planning phase and wants omissions surfaced before execution.
 
 Do not use when:
 - The user asks for an exhaustive risk review, a normal code review, or open-ended brainstorming.

@@ -1,11 +1,9 @@
+---
+name: contracts-and-migrations
+description: "Safely change compatibility boundaries such as APIs, schemas, config, env vars, CLI behavior, event shapes, or file formats. Use when: A change affects a public or shared contract between producers and consumers.; A change alters schemas, payload shapes, config keys, environment variables, CLI flags, event formats, or file formats.; A change needs migration, compatibility, rollout, or fallback thinking."
+---
+
 # Contracts And Migrations
-
-Description: Safely change compatibility boundaries such as APIs, schemas, config, env vars, CLI behavior, event shapes, or file formats.
-
-Use when:
-- A change affects a public or shared contract between producers and consumers.
-- A change alters schemas, payload shapes, config keys, environment variables, CLI flags, event formats, or file formats.
-- A change needs migration, compatibility, rollout, or fallback thinking.
 
 Do not use when:
 - The change is a purely internal refactor with no contract, compatibility, or data-shape impact.

@@ -1,12 +1,9 @@
+---
+name: code-planning
+description: "Turn a non-trivial request into a concrete execution plan before implementation. Use when: The task spans multiple meaningful steps.; There are unknown dependencies, sequencing concerns, or staged validation.; The next safe implementation step is not already obvious.; A shared plan would reduce rework or make handoff easier."
+---
+
 # Code Planning
-
-Description: Turn a non-trivial request into a concrete execution plan before implementation.
-
-Use when:
-- The task spans multiple meaningful steps.
-- There are unknown dependencies, sequencing concerns, or staged validation.
-- The next safe implementation step is not already obvious.
-- A shared plan would reduce rework or make handoff easier.
 
 Do not use when:
 - The change is trivial and the next safe step is obvious.

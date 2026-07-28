@@ -1,14 +1,9 @@
+---
+name: observability-review
+description: "Perform a deeper observability pass to ensure a flow is diagnosable and add or recommend the minimum telemetry needed. Key consideration: \"Is the system/outcome observable as an AI Agent or only a human?\" when applicable, devise a way to improve agent-observability without negatively affecting user experience or system performance. Use when: Debugging unclear behavior.; Reviewing a change for diagnosability or operability.; Working in stateful, asynchronous, or cross-boundary code where blind spots are likely."
+---
+
 # Observability Review
-
-Description: 
-
-- Perform a deeper observability pass to ensure a flow is diagnosable and add or recommend the minimum telemetry needed.
-- Key consideration: "Is the system/outcome observable as an AI Agent or only a human?" when applicable, devise a way to improve agent-observability without negatively affecting user experience or system performance.
-
-Use when:
-- Debugging unclear behavior.
-- Reviewing a change for diagnosability or operability.
-- Working in stateful, asynchronous, or cross-boundary code where blind spots are likely.
 
 Read first:
 - `../../project/discovery.md` when it exists
