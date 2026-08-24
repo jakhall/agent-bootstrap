@@ -23,7 +23,7 @@ This template is opinionated about a few things:
 - Agent instructions should be easy to discover. The root `AGENTS.md` stays tiny so tools that look for that file can find the handoff immediately.
 - Reusable guidance should stay reusable. Skills and standards live under `.agents/` so they can be copied between repos without carrying repo-specific noise with them.
 - Project memory should be earned, not pre-filled. Repo-specific docs like discovery notes, observability instructions, and task handoff files belong under `.agents/project/`, but only after the target repo has been explored.
-- Task tracking, planning, observability, and proportional validation are default expectations. The template nudges agents to create a task note for non-trivial work, plan before editing, avoid guessing when visibility is weak, keep code comments reserved for non-obvious logic while development notes go into project memory, and report what was or was not verified.
+- Task tracking, planning, observability, and proportional validation are default expectations. The template nudges agents to create a task note for non-trivial work, plan before editing, avoid guessing when visibility is weak, default to no code comments and add one only when highly essential while development notes go into project memory, and report what was or was not verified.
 
 That gives you a template that is structured enough to guide agents, but still lightweight enough to fit almost any codebase.
 
