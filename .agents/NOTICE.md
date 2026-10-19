@@ -6,7 +6,7 @@ Some skills in `.agents/skills/` are adapted from third-party MIT-licensed sourc
 
 - Source: https://github.com/mattpocock/skills
 - Pinned commit: `49dd158d1076134a641b33efb035946536778336` (2026-10-09)
-- Adapted into: `bug-investigation` ← `diagnosing-bugs`; `test-strategy` ← `tdd`; `code-review` ← `code-review`; `grilling` ← `grilling`; `writing-for-agents` ← `writing-for-agents` + `SKILL-MECHANICS.md`; `task-tracking` handoff step ← `handoff` + `ask-matt/PHASE-BOUNDARIES.md` + `triage/AGENT-BRIEF.md`
+- Adapted into: `bug-investigation` ← `diagnosing-bugs`; `test-strategy` ← `tdd`; `code-review` ← `code-review`; `grilling` ← `grilling`; `writing-for-agents` ← `writing-for-agents` + `SKILL-MECHANICS.md`; `domain-modeling` ← `domain-modeling` + `GLOSSARY-FORMAT.md` + `ADR-FORMAT.md`; `task-tracking` handoff step ← `handoff` + `ask-matt/PHASE-BOUNDARIES.md` + `triage/AGENT-BRIEF.md`
 
 ```
 MIT License
