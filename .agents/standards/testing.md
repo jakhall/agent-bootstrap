@@ -7,6 +7,8 @@ Use this file as lightweight validation guidance across projects.
 - For bugs, validate the underlying fix rather than a superficial workaround.
 - For contract or interface changes, validate affected callers and any intended compatibility behavior.
 - Prefer focused checks that match the actual risk of the change.
+- Test through public seams so tests survive internal refactors; mock only at system boundaries the team does not own or cannot run locally.
+- Take expected values from an independent source (a literal, a worked example, the spec), never from a recomputation of the code under test.
 - Go broader when the change crosses boundaries, integrations, or shared infrastructure.
 - For cross-boundary changes, prefer broader integration-level checks when that is where the real risk lives.
 - Do not treat work as complete until the relevant validation passes.
