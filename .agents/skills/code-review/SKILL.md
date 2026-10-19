@@ -14,7 +14,7 @@ Read as needed:
 ## Instructions
 
 1. Pin what is under review: the diff against a fixed point (branch, commit, merge-base) or the files the user named. Confirm the ref resolves and the diff is non-empty before reviewing.
-2. Find the originating spec: issue references in commit messages or the PR body, the task note, `.agents/project/specs/`, or a path the user gave. When none exists, say so and skip the spec checks.
+2. Find the originating spec: issue references in commit messages or the PR body (read the issue body and its comments), `.agents/project/specs/`, or a path the user gave. Add the decisions recorded since (the task note, the PR body's decisions or risks): a recorded decision overrides the issue text, so a deviation it covers is noted as "by decision", not reported as a finding. When no spec exists, say so and skip the spec checks.
 3. Find the repo's documented standards: `CLAUDE.md`, `AGENTS.md`, `CONTRIBUTING.md`, `CODING_STANDARDS.md`, agent or lint docs, and the local rules in `.agents/project/discovery.md`. Leave whatever tooling already enforces to the tooling.
 4. Prioritize findings over summary.
 5. Look first for behavioral regressions, broken assumptions, contract or data issues, missing tests, observability blind spots, and stale shared project memory. Then check:
