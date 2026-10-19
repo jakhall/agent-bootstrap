@@ -34,21 +34,26 @@ Ways to build one, roughly in order:
 
 Then make the loop **tight**: faster (narrow the scope, skip unrelated setup), sharper (assert the exact symptom, not "didn't crash"), deterministic (pin time, seed randomness, isolate filesystem and network). For flaky bugs, raise the reproduction rate (loop the trigger, parallelise, add stress) until it is debuggable.
 
+Give the loop three outcomes, not two: **red** (the bug shows), **green** (the bug is absent), and **invalid** (a precondition is missing or the harness itself broke). Run a positive control, a known-good input that must come back green, before trusting any red; a harness that can only fail proves nothing.
+
 When a loop genuinely cannot be built, stop and say so: list what you tried, then ask for access to an environment that reproduces it, a redacted captured artifact (logs, HAR, dump), or permission for temporary instrumentation. Hypothesising starts only once a loop exists.
 
 **Done when** you can show one command, already run at least once with its redacted output, that is:
 - [ ] red-capable: it drives the real bug path and asserts the user's exact symptom
+- [ ] controlled: a known-good input comes back green, and a broken setup reports invalid rather than red
 - [ ] deterministic, or reproduces at a pinned, high rate
 - [ ] fast: seconds, not minutes
 - [ ] runnable unattended by the agent
 
 ## 2. Reproduce and minimise
 
-Run the loop and confirm it shows the failure the **user** described, not a nearby one, across repeated runs. Capture the exact symptom (error, wrong value, timing) so later phases can verify the fix against it.
+Run the loop and confirm it shows the failure the **user** described, not a nearby one, across repeated runs. Capture the exact symptom (error, wrong value, timing) so later phases can verify the fix against it. Check the behaviour against its stated intent (code comment, commit message, docs, spec) and say whether it is a bug or intended.
 
-Then shrink the scenario: cut inputs, callers, config, data, and steps one at a time, re-running the loop after each cut.
+Map the reach: which other inputs, paths, callers, or environments hit the same cause. The report usually names one case; the fix has to cover all of them.
 
-**Done when** every remaining element is load-bearing: removing any one of them turns the loop green.
+Then shrink the scenario: cut inputs, callers, config, data, and steps one at a time, re-running the loop after each cut. A cut that makes the loop invalid removed a precondition, not the bug; restore it.
+
+**Done when** every remaining element is load-bearing (removing any one turns the loop green, not invalid) and the reach is listed.
 
 ## 3. Hypothesise
 
@@ -58,11 +63,11 @@ Before testing a fix in shared code, grep every caller of the function you would
 
 Show the ranked list to the user before testing; they often re-rank instantly from domain knowledge. If they are away, proceed with your own ranking.
 
-**Done when** the list is ranked, each item carries its prediction, and the user has seen it.
+**Done when** the list is ranked, each item carries its prediction, and the user has seen it (or, when they are away, it is recorded in your report for them).
 
 ## 4. Instrument
 
-Each probe tests one prediction from phase 3, changing one variable at a time. Prefer a debugger or REPL; otherwise add targeted logs at the boundaries that separate hypotheses. Tag every temporary log with a unique prefix such as `[DEBUG-a4f2]` so cleanup is a single grep. When current signals cannot separate the hypotheses, add or recommend durable telemetry per `observability.md` instead of guessing.
+Each probe tests one prediction from phase 3, changing one variable at a time. Prefer a debugger or REPL; otherwise add targeted logs at the boundaries that separate hypotheses. Tag every temporary log with a unique prefix such as `[DEBUG-a4f2]` so cleanup is a single grep. When the code is live shared tooling (hooks, shared config, anything other sessions or users run right now), instrument a copy and drive the loop against the copy. When current signals cannot separate the hypotheses, add or recommend durable telemetry per `observability.md` instead of guessing.
 
 For performance regressions, measure a baseline first (timer, profiler, query plan), then bisect; logs rarely answer timing questions.
 
@@ -70,7 +75,7 @@ For performance regressions, measure a baseline first (timer, profiler, query pl
 
 ## 5. Fix with a regression test
 
-Write the regression test before the fix, at a **correct seam**: one that exercises the real bug pattern as it happens at the call site. A seam too shallow to reproduce it (a single-caller test for a multi-caller bug) gives false confidence. When no correct seam exists, record that as a finding: the architecture is preventing this bug from being locked down.
+Write the regression test before the fix, at a **correct seam**: one that exercises the real bug pattern as it happens at the call site. A seam too shallow to reproduce it (a single-caller test for a multi-caller bug) gives false confidence. When no correct seam exists, record that as a finding: the architecture is preventing this bug from being locked down. When the repo has no test framework, keep the phase 1 loop as the regression check (a script beside the code it guards).
 
 With a correct seam:
 1. Turn the minimised repro into a failing test there and watch it fail. If you forced the red by mutating code or a fixture, diff against a pristine copy to prove the mutation landed.
