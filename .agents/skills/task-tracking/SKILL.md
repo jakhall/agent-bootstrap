@@ -43,3 +43,13 @@ Do not use when:
 ```
 
 9. Only truly trivial tasks may skip the file. Non-trivial tasks should not proceed without one.
+10. When work moves to a fresh session, card, subagent, colleague, another repo, or another agent, first pick the move: **continue** when the next phase needs this conversation verbatim and there is room; **/clear** when nothing here matters next; a **subagent** for a tightly scoped task that can run unattended; **/compact** otherwise; a **handoff** only when the work travels. For a handoff, fill the note's `Handoff` section (or, with no task note, a brief in the OS temp directory) so a reader with no context can continue:
+    - Goal, state (branch, commits, PRs and issues by link), and decisions with a one-line why, provisional ones marked.
+    - References by path or URL; point at specs, plans, ADRs, and diffs instead of copying them.
+    - Must-do steps naming every skill the next session must run, as actions it cannot miss: `load the ab-<name> skill`, or for a toolbox skill `Read <toolbox plugin folder>/skills/tb-<name>/SKILL.md and follow it on <target>`.
+    - For one well-defined change, an agent brief: current and desired behaviour (edge cases included), key interfaces (types, signatures, contracts; no file paths or line numbers), independently checkable acceptance criteria, and out of scope.
+    - Secrets and personal data replaced with `<REDACTED>`.
+    When you start the next session or subagent yourself, put the must-do steps in its first prompt, and confirm it ran them.
+
+---
+Handoff step adapted from mattpocock/skills `handoff`, `ask-matt/PHASE-BOUNDARIES.md`, and `triage/AGENT-BRIEF.md` (MIT, `49dd158`). See `.agents/NOTICE.md`.
