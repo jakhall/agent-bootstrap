@@ -1,8 +1,10 @@
 import { existsSync } from 'node:fs';
-import { dirname, join } from 'node:path';
+import { homedir } from 'node:os';
+import { dirname, join, resolve } from 'node:path';
 import { addedText, posix } from './lib.mjs';
 
 const PROJECT_DETAIL = /^#{1,3}\s+.*\b(commands?|stack|architecture|quick start|getting started|setup|build|test(ing)?|entrypoints?|structure|layout|deploy(ment)?|dependencies)\b/im;
+const GLOBAL_MEMORY = resolve(homedir(), '.claude', 'CLAUDE.md').toLowerCase();
 
 export function check(input) {
   const filePath = input?.tool_input?.file_path;
@@ -11,8 +13,9 @@ export function check(input) {
   const p = posix(filePath);
   if (!/\/CLAUDE\.md$/i.test(p)) return null;
 
-  // The user's own global memory legitimately holds rules; only repo files are in scope.
-  if (/\/\.claude\//.test(p)) return null;
+  // The user's own global memory legitimately holds rules. Match it by exact path:
+  // ~/.claude can itself pass the repo-root check below, and repos and worktrees live under .claude dirs.
+  if (resolve(filePath).toLowerCase() === GLOBAL_MEMORY) return null;
 
   const dir = dirname(filePath);
   const isRepoRoot = existsSync(join(dir, '.git')) || existsSync(join(dir, '.agents'));
