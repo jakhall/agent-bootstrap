@@ -11,6 +11,7 @@ Read `.agents/project/discovery.md` before substantive work when it exists, then
 - `bug-investigation`: trigger for bugs, flaky behavior, performance regressions, unexplained failures, or root-cause debugging; a gated loop that builds a red feedback loop before any hypothesis.
 - `code-review`: trigger when reviewing code, a diff, or a proposed change for regressions, delivery against the originating issue or spec, documented repo standards, missing validation, or operability issues.
 - `observability-review`: a deeper observability pass for unclear, stateful, asynchronous, or cross-boundary flows. Baseline observability still applies even when this skill is not loaded. Create or update `.agents/project/observability.md` when repo-specific usage guidance is needed.
+- `writing-for-agents`: the reference for any agent-facing document; trigger when creating or editing a skill, command, router, `AGENTS.md`/`CLAUDE.md`, a standards file, or `discovery.md`.
 - `test-strategy`: trigger when deciding what to test, how to validate a risky change, which test layer should carry the proof, or when building test-first; agrees seams up front and runs a red-green loop.
 
 ## Common Bundles
