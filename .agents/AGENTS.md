@@ -11,9 +11,10 @@
 - Default to writing NO code comments. Add one only when it is highly essential — a non-obvious constraint, invariant, tradeoff, or "why" that a competent reader genuinely cannot recover from the code itself. When tempted to comment, improve the naming or structure first; if in doubt, leave it out. Never write comments that restate or label what the code does ("loop through users", "constructor", "set the counter"), narrate the diff ("changed/added this because"), leave TODO/FIXME/HACK markers, or add historical or temporal asides. The one routine exception is doc comments on public or exported APIs (e.g. C# `///` XML docs, JSDoc on exported members) where the project already uses them — state the contract, not the implementation. Put unfinished work, caveats, and rationale in the task note or `.agents/project/discovery.md`.
 - Agent focused real-time observability is important - Agents should be able to see/explain what happened, why it happened, and where it failed, add or recommend the useful telemetry, utilize observability-review skill.
 - In multi-agent work, claim a bounded task or file scope in the task note before editing.
-- Be candid and direct: give honest opinions and recommendations, proactively surface concerns, risks, trade-offs, and disagreement (including with the requested approach), and do not withhold relevant reasoning or uncertainty.
-- When intent, scope, priorities, or trade-offs are unclear, ask clarifying questions rather than guessing or proceeding on assumptions. Ask as many as you need — there is no preset number — and when unsure, prefer asking too many questions over too few.
-- Validate changes proportionally and report anything not verified.
+- Long or multi-phase work: start a fresh session (or `/clear`) per phase with the task note as the hand-over, rather than one session that grows for hours. Run full reviews at milestones, not after every slice.
+- Be candid and direct: give your recommendation, and say so when you disagree, including with the requested approach. Raise the concerns that would change the user's decision, usually the top one to three, one line each; do not list every conceivable risk.
+- When intent, scope, priorities, or trade-offs are unclear, ask clarifying questions rather than guessing or proceeding on assumptions. Ask as many as you need — there is no preset number — and when unsure, prefer asking too many questions over too few. Batch them in one round, one line each with your recommended answer.
+- Validate changes proportionally; state what was not verified in one line.
 
 ## Response style
 
@@ -22,8 +23,10 @@ Optimise chat replies for signal-to-noise and fast scanning — the user runs se
 - Lead with what matters: open with the conclusion, decision, result, or the blocker/risk — not preamble or a restatement of the request. Supporting detail follows.
 - Prefer short bullets and fragments over dense paragraphs; use prose only when a bullet can't carry the meaning.
 - Make critical points structurally easy to find (first line, first bullet, bold), and keep replies self-contained enough to parse cold after a context switch.
-- Cut noise, not information: drop filler, repetition, and non-essential background — never material risks, constraints, assumptions, exceptions, or uncertainty.
+- Keep only what is decision-relevant: something that would change what the user decides or does next. Everything else is noise, however accurate.
+- Noise to leave out unless asked: process narration (commands run, checks that passed, retries, tool or temp-file hiccups you already fixed), internal IDs and codes the user did not coin, restating the plan, and sub-agent or side-session reports forwarded as-is (summarise them in the user's terms).
+- Length budget: about 10 lines by default. Go longer only when the user asked for detail or the content is itself the deliverable.
 - Offer depth rather than front-loading it: give extra reasoning or background only when it changes the answer or is asked for.
 - Use plain, explicit language; don't rely on implied context or unstated assumptions.
 
-This never overrides asking clarifying questions, surfacing alternatives/disagreement/uncertainty, or the fixed formats of skills and persisted files (task notes, `discovery.md`, the `what-arent-we-considering` checklist). Guiding principle: maximise signal-to-noise and rapid comprehension while preserving all decision-relevant information.
+Clarifying questions, disagreement and uncertainty still get said, in this same brief style; they are not an exemption from it. The fixed formats of skills and persisted files (task notes, `discovery.md`, the `what-arent-we-considering` checklist) keep their own shape.
