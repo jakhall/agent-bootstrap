@@ -8,9 +8,10 @@
   Claude Code discovers skills by scanning ~/.claude/skills and needs YAML
   frontmatter with a name and description to decide when one triggers. The repo
   stores workflows as tool-agnostic markdown under .agents/skills, so this script
-  generates the former from the latter. Each wrapper's body points at the absolute
-  path of the real doc rather than copying it, so editing a skill's instructions
-  takes effect immediately; only a `description` change needs a regenerate.
+  generates the former from the latter. Each wrapper carries the full body of the
+  real doc, so loading a skill costs one step instead of a wrapper plus a second
+  read. Any edit to a skill therefore needs a regenerate; the SessionStart hook
+  warns when a wrapper is older than its source.
 
   Normal entry point (a shim at that path forwards here):
       powershell -NoProfile -File "$HOME\.claude\agent-bootstrap-sync.ps1"
@@ -117,27 +118,27 @@ function Get-SkillFrontmatter([string]$Path, [string]$ExpectedName) {
         $manual = @('true', 'yes', '1') -contains $fm['manual-only'].ToLower()
     }
 
-    return [pscustomobject]@{ Name = $fm['name']; Description = $desc; ManualOnly = $manual }
+    $body = (($lines[($end + 1)..($lines.Count - 1)]) -join "`n").Trim()
+
+    return [pscustomobject]@{ Name = $fm['name']; Description = $desc; ManualOnly = $manual; Body = $body }
 }
 
 function ConvertTo-YamlDoubleQuoted([string]$s) {
     return '"' + $s.Replace('\', '\\').Replace('"', '\"') + '"'
 }
 
-$bodyTemplate = @'
-Read and follow the authoritative workflow at:
-`__SRC__`
-
-Paths inside it: `.agents/skills/` and `.agents/standards/` are in the global clone
-(`~/.claude/agent-bootstrap/.agents/`). `.agents/project/` means the CURRENT working repo's
-`.agents/project/` folder.
+$pathNote = @'
+> Generated from `__SRC__` by sync.ps1; edit the source, then re-run sync.
+> Paths: `.agents/skills/`, `.agents/standards/` and `../../standards/` are in the global clone
+> (`~/.claude/agent-bootstrap/.agents/`). `.agents/project/` and `../../project/` mean the CURRENT
+> working repo's `.agents/project/` folder.
 '@
 
 function Build-WrapperContent($Meta, [string]$WrapperName, [string]$SrcDoc) {
     $fm = "---`nname: $WrapperName`ndescription: " + (ConvertTo-YamlDoubleQuoted $Meta.Description)
     if ($Meta.ManualOnly) { $fm += "`ndisable-model-invocation: true" }
     $fm += "`n---`n"
-    return $fm + "`n" + $bodyTemplate.Replace('__SRC__', $SrcDoc) + "`n"
+    return $fm + "`n" + $pathNote.Replace('__SRC__', $SrcDoc) + "`n`n" + $Meta.Body + "`n"
 }
 
 # --- 1. pull latest (skipped in -Check: must stay read-only and offline) ---

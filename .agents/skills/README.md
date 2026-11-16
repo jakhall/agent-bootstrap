@@ -1,12 +1,12 @@
 # Skills Catalog
 
-Read `.agents/project/discovery.md` before substantive work when it exists, then use the smallest matching set of skills for the task. Task tracking, planning, and observability are mandatory baselines from `.agents/AGENTS.md`; the skills below provide the deeper workflow when those concerns need explicit handling.
+Read `.agents/project/discovery.md` before substantive work when it exists, then use the smallest matching set of skills for the task. Planning is expected for non-trivial work; task tracking and observability apply when `.agents/AGENTS.md` says they do. Add `task-tracking` to any bundle below when the work spans sessions or agents.
 
 - `project-discovery`: trigger on unfamiliar repos, autonomous first-pass runs, or stale/incomplete discovery context; create `.agents/project/` on demand, inspect README, manifests, config, CI, docs, and scoped instructions, refresh `.agents/project/discovery.md`, then return a short summary from the updated project memory.
 - `code-planning`: the default planning workflow for non-trivial work when the plan is not already concrete; use it to make sequencing, assumptions, and validation explicit before execution.
 - `grilling`: the interview primitive. Trigger when a plan or decision depends on choices only the user can make, or the user asks to be grilled; asks overarching decisions first, in rounds, each question explained plainly with a recommended answer. `code-planning` runs it for open decisions.
 - `contracts-and-migrations`: trigger when a change affects compatibility boundaries such as APIs, schemas, config, env vars, CLI behavior, event shapes, or file formats.
-- `task-tracking`: trigger for every non-trivial task. Create `.agents/project/tasks/` on demand, record task state there, and keep exactly one task note per task.
+- `task-tracking`: trigger when work spans sessions or agents, will be handed off, or the user asks for a task note. Create `.agents/project/tasks/` on demand, record task state there, and keep exactly one task note per task.
 - `what-arent-we-considering`: trigger on the exact user phrase "what aren't we considering?" or equivalent gap-analysis requests; this skill is human-triggered and intentionally waits for user selection.
 - `bug-investigation`: trigger for bugs, flaky behavior, performance regressions, unexplained failures, or root-cause debugging; a gated loop that builds a red feedback loop before any hypothesis.
 - `code-review`: trigger when reviewing code, a diff, or a proposed change for regressions, delivery against the originating issue or spec, documented repo standards, missing validation, or operability issues.
@@ -17,8 +17,8 @@ Read `.agents/project/discovery.md` before substantive work when it exists, then
 
 ## Common Bundles
 
-- Feature work: `task-tracking` + `code-planning` (+ `grilling` for open decisions) + `test-strategy`, plus `observability-review` when the flow is stateful or cross-boundary.
-- Bug fix: `task-tracking` + `bug-investigation` + `test-strategy`, plus `observability-review` when current signals are weak.
-- Code review: `task-tracking` + `code-review`, plus `observability-review` when diagnosability or operability matters.
-- Unfamiliar repo: `task-tracking` + `project-discovery` first, then the task-specific set.
-- Contract or migration change: `task-tracking` + `code-planning` + `contracts-and-migrations` + `test-strategy`, plus `observability-review` when rollout or compatibility visibility matters.
+- Feature work: `code-planning` (+ `grilling` for open decisions) + `test-strategy`, plus `observability-review` when the flow is stateful or cross-boundary.
+- Bug fix: `bug-investigation` + `test-strategy`, plus `observability-review` when current signals are weak.
+- Code review: `code-review`, plus `observability-review` when diagnosability or operability matters.
+- Unfamiliar repo: `project-discovery` first, then the task-specific set.
+- Contract or migration change: `code-planning` + `contracts-and-migrations` + `test-strategy`, plus `observability-review` when rollout or compatibility visibility matters.

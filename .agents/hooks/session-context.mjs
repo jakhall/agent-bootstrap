@@ -1,5 +1,5 @@
-import { execFileSync } from 'node:child_process';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
+import { homedir } from 'node:os';
 import { dirname, join, parse } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { emitContext, parseSections, posix } from './lib.mjs';
@@ -48,25 +48,24 @@ function buildInjection(text) {
 }
 
 /**
- * Resolved relative to this file so the check follows the clone rather than assuming
- * where it was installed. PowerShell-only, so it does not run on macOS or Linux.
+ * Cheap drift check run on every session start: a wrapper is stale when it is missing
+ * or older than its source SKILL.md. sync.ps1 -Check does the exact content comparison,
+ * but starting PowerShell here cost seconds per session.
  */
 function syncDriftWarning() {
-  if (process.platform !== 'win32') return null;
-  const script = fileURLToPath(new URL('../tools/sync.ps1', import.meta.url));
-  if (!existsSync(script)) return null;
-  try {
-    execFileSync('powershell', ['-NoProfile', '-File', script, '-Check'], {
-      stdio: 'pipe',
-      timeout: 8000,
-    });
-    return null;
-  } catch (err) {
-    if (err?.status === 1) {
+  const skillsSrc = fileURLToPath(new URL('../skills/', import.meta.url));
+  const skillsDst = join(homedir(), '.claude', 'skills');
+  if (!existsSync(skillsSrc) || !existsSync(skillsDst)) return null;
+  for (const entry of readdirSync(skillsSrc, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const src = join(skillsSrc, entry.name, 'SKILL.md');
+    if (!existsSync(src)) continue;
+    const dst = join(skillsDst, `ab-${entry.name}`, 'SKILL.md');
+    if (!existsSync(dst) || statSync(dst).mtimeMs < statSync(src).mtimeMs) {
       return 'The `ab-*` skill wrappers are out of sync with the agent-bootstrap clone. Run: powershell -NoProfile -File "$HOME\\.claude\\agent-bootstrap-sync.ps1"';
     }
-    return null;
   }
+  return null;
 }
 
 function main() {
