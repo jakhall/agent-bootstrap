@@ -32,6 +32,7 @@ That gives you a template that is structured enough to guide agents, but still l
 Use these as the main entrypoints when you adopt or extend the template:
 
 - `README.md`: human-facing explanation of what the template is and how to use it.
+- `INSTALL.md`: global install for Claude Code on Windows (one clone shared by every repo, plus hooks, `CLAUDE.md` block and `ab-*` skills).
 - `AGENTS.md`: compatibility shim that points agents to `.agents/AGENTS.md`.
 - `.agents/AGENTS.md`: repo-local workflow rules for planning, discovery, observability, validation, and safe collaboration.
 - `.agents/skills/README.md`: catalog of available skills plus common bundles.
@@ -67,6 +68,8 @@ When you copy this template into a real codebase, agents should create that fold
 This keeps the template clean while still giving adopted repos a place to accumulate factual project memory over time.
 
 ## How To Adopt It
+
+To use the workflow in every repo on a machine without copying it, follow `INSTALL.md` instead. To adopt it in one repo:
 
 1. Copy `AGENTS.md` and the `.agents/` directory into the root of an existing project.
 2. Read `.agents/AGENTS.md` and adjust any repo-level expectations that should be different for that codebase.
